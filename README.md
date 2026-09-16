@@ -175,7 +175,7 @@ Pada Tugas 3:
 
 Perubahan disimpan secara bertahap menggunakan commit yang menjelaskan pekerjaan pada setiap tahap. Pesan commit penyelesaian mengikuti ketentuan masing-masing modul.
 
-Untuk Tugas 2 dan Tugas 3, informasi pengumpulan melalui Sikola mencakup nama, NIM, dan tautan repositori.
+Tugas 1, Tugas 2, dan Tugas 3 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
 
 ## Catatan
 
