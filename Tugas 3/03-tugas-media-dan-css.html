@@ -3,51 +3,125 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Kartu multimedia pembelajaran pengenalan HTML dan CSS untuk tugas Pemrograman Web Modul 3.">
+    <meta name="description" content="Materi singkat tentang browser dengan video, audio, takarir, dan sampul responsif untuk Tugas Modul 3 Pemrograman Web.">
     <meta name="author" content="Gabriel Tan">
-    <title>Media Kuliah Responsif | Tugas Modul 3</title>
+    <title>Mengenal Browser dan Media Web | Modul 3</title>
     <link rel="stylesheet" href="03-tugas-style.css">
 </head>
 <body>
+    <a class="skip-link" href="#konten-utama">Lewati ke materi kuliah</a>
+
     <header class="page-header">
-        <p class="page-header__label">Pemrograman Web — Modul 3</p>
-        <h1 class="page-header__title">Media Pembelajaran Kuliah</h1>
-        <p>
-            Gabriel Tan · D121241071 · Kelas B
-        </p>
+        <p class="page-header__label">PEMROGRAMAN WEB / MODUL 03</p>
+        <h1 class="page-header__title">Ruang belajar multimedia</h1>
+        <p class="page-header__identity">Gabriel Tan · D121241071 · Kelas B</p>
+        <p class="page-header__institution">Teknik Informatika, Universitas Hasanuddin</p>
     </header>
 
-    <main>
-        <article class="lecture-card">
+    <main id="konten-utama">
+        <article class="lecture-card" aria-labelledby="judul-materi">
+            <picture class="lecture-card__cover">
+                <source media="(min-width: 800px)" srcset="aset/sampul-desktop.webp" type="image/webp">
+                <source media="(max-width: 799px)" srcset="aset/sampul-ponsel.webp" type="image/webp">
+                <img class="lecture-card__cover-image" src="aset/sampul-fallback.jpg"
+                     alt="Ilustrasi jendela browser berisi pemutar video dan simbol audio."
+                     width="1200" height="520" fetchpriority="high">
+            </picture>
+
             <div class="lecture-card__content">
                 <p class="lecture-card__category">Materi dasar web</p>
-
-                <h2 class="lecture-card__title">
-                    Pengenalan HTML dan CSS
-                </h2>
-
+                <h2 class="lecture-card__title" id="judul-materi">Mengenal browser dan media web</h2>
                 <p class="lecture-card__description">
-                    Pelajari peran HTML dalam menyusun struktur halaman
-                    dan CSS dalam mengatur tampilannya. Materi membahas
-                    elemen semantik, pemilih CSS, serta dasar box model.
+                    Kenali peran browser untuk membuka halaman web, lalu bedakan
+                    browser, sistem operasi, dan mesin pencari melalui video singkat.
+                    Kamu dapat menonton, mendengarkan narasinya, atau membaca ringkasan.
                 </p>
+                <p class="lecture-card__meta">Sekitar 1 menit 9 detik · Narasi bahasa Inggris · Takarir Indonesia tersedia</p>
+
+                <section class="lecture-card__section" aria-labelledby="judul-video">
+                    <h3 class="lecture-card__section-title" id="judul-video">01 / Tonton materi</h3>
+                    <figure class="lecture-card__figure">
+                        <video class="lecture-card__video" controls playsinline preload="metadata"
+                               poster="aset/poster-browser.jpg" width="1280" height="720"
+                               aria-label="Video What is a browser? oleh Google">
+                            <source src="aset/mengenal-browser.webm" type="video/webm">
+                            <source src="aset/mengenal-browser.mp4" type="video/mp4">
+                            <track kind="subtitles" src="aset/takarir-id.vtt" srclang="id" label="Bahasa Indonesia" default>
+                            <track kind="subtitles" src="aset/takarir-en.vtt" srclang="en" label="English">
+                            Browser kamu tidak mendukung video HTML5.
+                            <a href="aset/mengenal-browser.mp4">Unduh video MP4</a>.
+                        </video>
+                        <figcaption class="lecture-card__caption">
+                            <cite lang="en">What is a browser?</cite> — Google, 2009.
+                            Video pengantar dari sumber eksternal, bukan rekaman kuliah Unhas.
+                        </figcaption>
+                    </figure>
+                    <p class="lecture-card__note">
+                        Video ini menggunakan contoh browser dari tahun 2009.
+                        Gunakan sebagai pengantar konsep, bukan rekomendasi versi perangkat lunak saat ini.
+                    </p>
+                    <p class="lecture-card__download">
+                        Jika pemutar bermasalah: <a href="aset/mengenal-browser.mp4" download>unduh MP4</a>
+                        atau <a href="aset/mengenal-browser.webm" download>unduh WebM</a>.
+                    </p>
+                </section>
+
+                <section class="lecture-card__section" aria-labelledby="judul-audio">
+                    <h3 class="lecture-card__section-title" id="judul-audio">02 / Dengarkan narasi</h3>
+                    <p class="lecture-card__text">
+                        Versi audio diambil dari video yang sama dan tetap berbahasa Inggris.
+                        Jeda video sebelum memutar audio agar suara tidak bertumpuk.
+                    </p>
+                    <audio class="lecture-card__audio" controls preload="metadata" aria-label="Narasi audio tentang pengertian browser">
+                        <source src="aset/narasi-browser.mp3" type="audio/mpeg">
+                        <source src="aset/narasi-browser.ogg" type="audio/ogg">
+                        Browser kamu tidak mendukung audio HTML5.
+                        <a href="aset/narasi-browser.mp3">Unduh audio MP3</a>.
+                    </audio>
+                    <p class="lecture-card__download"><a href="aset/narasi-browser.mp3" download>Unduh narasi MP3</a></p>
+                </section>
+
+                <section class="lecture-card__section" aria-labelledby="judul-ringkasan">
+                    <h3 class="lecture-card__section-title" id="judul-ringkasan">03 / Pahami inti materi</h3>
+                    <ul class="lecture-card__list">
+                        <li>Browser adalah aplikasi yang digunakan untuk mengunjungi situs dan menampilkan halaman web.</li>
+                        <li>Sistem operasi mengelola perangkat, berkas, dan aplikasi pada komputer.</li>
+                        <li>Mesin pencari membantu menemukan informasi di web dan dapat diakses melalui browser.</li>
+                    </ul>
+                    <details class="lecture-card__transcript">
+                        <summary>Baca teks pendamping bahasa Indonesia</summary>
+                        <p>Browser merupakan aplikasi penting untuk mengakses web. Banyak orang belum membedakannya dari sistem operasi atau mesin pencari.</p>
+                        <p>Windows dan Mac merupakan contoh sistem operasi. Mesin pencari merupakan layanan web untuk mencari informasi. Browser adalah program yang digunakan untuk mengunjungi situs.</p>
+                        <p>Untuk mengakses situs, buka browser, masukkan alamat web, lalu browser menampilkan halamannya. Video juga mengajak pengguna memilih browser yang sesuai. Contoh dan anjuran dalam video mencerminkan konteks tahun 2009.</p>
+                        <p>Teks ini merupakan ringkasan isi, bukan transkrip kata demi kata.</p>
+                    </details>
+                </section>
+
+                <section class="lecture-card__section lecture-card__sources" aria-labelledby="judul-sumber">
+                    <h3 class="lecture-card__section-title" id="judul-sumber">Sumber dan atribusi</h3>
+                    <p>
+                        Video: <a href="https://commons.wikimedia.org/wiki/File:What_is_a_browser-.webm"><cite lang="en">What is a browser?</cite></a>
+                        oleh Google, berlisensi <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                        MP4 merupakan konversi video; audio diekstrak dari video; poster diambil dari frame video.
+                    </p>
+                    <p>
+                        Takarir Inggris berasal dari <a href="https://commons.wikimedia.org/wiki/TimedText:What_is_a_browser-.webm.en.srt">Google melalui Wikimedia Commons</a>.
+                        Takarir Indonesia merupakan terjemahan berbantuan AI; format diubah menjadi WebVTT.
+                        Kontribusi teks Wikimedia Commons mengikuti <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+                    </p>
+                    <p>
+                        Sampul adalah ilustrasi diagram browser yang disusun untuk tugas ini dengan bantuan AI.
+                        Versi desktop menampilkan browser dan dokumen; versi ponsel memusatkan komposisi pada browser dan audio.
+                    </p>
+                </section>
             </div>
         </article>
     </main>
 
     <footer class="page-footer">
-        <p>
-            <small>
-                &copy; 2026 Gabriel Tan.
-                Tugas Mandiri Pemrograman Web Modul 3.
-            </small>
-        </p>
-        <p>
-            <small>
-                Acuan: PPT Modul 3, Rekayasa Media Digital
-                dan Dasar-Dasar CSS.
-            </small>
-        </p>
+        <p>&copy; 2026 Gabriel Tan · Tugas Mandiri Modul 3</p>
+        <p>Acuan: PPT Rekayasa Media Digital dan Dasar-Dasar CSS.</p>
+        <p>Halaman pembelajaran mahasiswa, bukan platform resmi universitas.</p>
     </footer>
 </body>
 </html>

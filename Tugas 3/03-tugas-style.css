@@ -1,4 +1,4 @@
-/* Reset global: ukuran elemen mencakup padding dan border. */
+/* Reset universal: padding dan border masuk ke ukuran elemen. */
 *,
 *::before,
 *::after {
@@ -10,72 +10,226 @@
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     font-size: 1rem;
-    line-height: 1.6;
-    color: #1e293b;
-    background-color: #f1f5f9;
-    padding: 24px 16px;
+    line-height: 1.65;
+    color: #243442;
+    background-color: #f6f3ee;
+    padding: 32px 16px;
 }
 
-/* Identitas halaman. */
+a {
+    color: #8d2633;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+
+a:focus-visible,
+summary:focus-visible,
+video:focus-visible,
+audio:focus-visible {
+    outline: 3px solid #155e75;
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    z-index: 1;
+    transform: translateY(-200%);
+    padding: 8px 12px;
+    background-color: #ffffff;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 .page-header {
-    max-width: 720px;
-    margin: 0 auto 24px;
+    max-width: 760px;
+    margin: 0 auto 28px;
     text-align: center;
 }
 
 .page-header__label {
-    margin-bottom: 8px;
-    color: #475569;
-    font-weight: 600;
+    margin-bottom: 10px;
+    color: #8d2633;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 
 .page-header__title {
     margin-bottom: 12px;
     font-size: 2rem;
-    line-height: 1.25;
+    line-height: 1.2;
 }
 
-/* Kartu materi. */
+.page-header__identity {
+    color: #4b5563;
+}
+
+.page-header__institution {
+    color: #5e625f;
+    font-size: 0.875rem;
+}
+
 .lecture-card {
     width: 100%;
-    max-width: 720px;
-    margin: 0 auto 24px;
+    max-width: 760px;
+    margin: 0 auto 28px;
     overflow: hidden;
     background-color: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border: 1px solid #ded8cf;
+    border-radius: 20px;
+    box-shadow: 0 12px 36px rgba(36, 52, 66, 0.08);
+}
+
+.lecture-card__cover,
+.lecture-card__cover-image {
+    display: block;
+    width: 100%;
+}
+
+.lecture-card__cover-image {
+    height: auto;
 }
 
 .lecture-card__content {
-    padding: 24px;
+    padding: 32px;
 }
 
 .lecture-card__category {
     margin-bottom: 8px;
-    color: #475569;
-    font-size: 0.875rem;
-    font-weight: 600;
+    color: #8d2633;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
 }
 
 .lecture-card__title {
-    margin-bottom: 12px;
-    font-size: 1.5rem;
-    line-height: 1.3;
+    margin-bottom: 16px;
+    font-size: 1.875rem;
+    line-height: 1.25;
 }
 
+/* Gaya dasar deskripsi; modifier ditambahkan pada tahap 3. */
 .lecture-card__description {
-    color: #475569;
+    color: #4b5563;
+    font-weight: 400;
+    margin-bottom: 12px;
 }
 
-/* Penutup halaman. */
+.lecture-card__meta {
+    color: #5e625f;
+    font-size: 0.8125rem;
+}
+
+.lecture-card__section {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #e7e2da;
+}
+
+.lecture-card__section-title {
+    margin-bottom: 14px;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+.lecture-card__video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background-color: #18232b;
+    border-radius: 10px;
+}
+
+.lecture-card__caption,
+.lecture-card__note,
+.lecture-card__download {
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.lecture-card__text {
+    margin-bottom: 14px;
+}
+
+.lecture-card__audio {
+    display: block;
+    width: 100%;
+}
+
+.lecture-card__list {
+    padding-left: 22px;
+}
+
+.lecture-card__list li + li {
+    margin-top: 8px;
+}
+
+.lecture-card__transcript {
+    margin-top: 18px;
+    padding: 16px;
+    background-color: #f6f3ee;
+    border-radius: 10px;
+}
+
+.lecture-card__transcript summary {
+    color: #8d2633;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.lecture-card__transcript p {
+    margin-top: 12px;
+}
+
+.lecture-card__sources {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.lecture-card__sources p + p {
+    margin-top: 12px;
+}
+
 .page-footer {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
-    color: #475569;
     text-align: center;
+    color: #5e625f;
+    font-size: 0.8125rem;
 }
 
 .page-footer p + p {
-    margin-top: 8px;
+    margin-top: 4px;
 }
+
+@media (max-width: 799px) {
+    .lecture-card__cover-image {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    .page-header__title {
+        font-size: 1.625rem;
+    }
+
+    .lecture-card__content {
+        padding: 20px;
+    }
+
+    .lecture-card__title {
+        font-size: 1.5rem;
+    }
+}
+
