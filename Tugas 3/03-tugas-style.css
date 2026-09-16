@@ -1,4 +1,4 @@
-/* Reset universal: padding dan border masuk ke ukuran elemen. */
+/* Menghapus jarak bawaan dan menghitung padding serta border dalam ukuran elemen. */
 *,
 *::before,
 *::after {
@@ -82,6 +82,7 @@ audio:focus-visible {
     border: 1px solid #ded8cf;
     border-radius: 20px;
     box-shadow: 0 12px 36px rgba(36, 52, 66, 0.08);
+    transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .lecture-card__cover,
@@ -112,7 +113,15 @@ audio:focus-visible {
     line-height: 1.25;
 }
 
-/* Gaya dasar deskripsi; modifier ditambahkan pada tahap 3. */
+/* Deskripsi pada kartu pilihan dibuat merah tua dan lebih tebal.
+   Selector ini memakai dua kelas, sehingga lebih spesifik dari aturan dasar. */
+.lecture-card--featured .lecture-card__description {
+    color: #8d2633;
+    font-weight: 600;
+}
+
+/* Gaya dasar deskripsi. Pada kartu pilihan, aturan di atas tetap berlaku
+   meskipun aturan ini ditulis belakangan. */
 .lecture-card__description {
     color: #4b5563;
     font-weight: 400;
@@ -233,3 +242,21 @@ audio:focus-visible {
     }
 }
 
+/* Efek hover diterapkan pada perangkat dengan penunjuk presisi, seperti mouse. */
+@media (hover: hover) and (pointer: fine) {
+    .lecture-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 42px rgba(36, 52, 66, 0.15);
+    }
+}
+
+/* Menonaktifkan gerakan kartu jika pengguna memilih untuk mengurangi animasi. */
+@media (prefers-reduced-motion: reduce) {
+    .lecture-card {
+        transition: none;
+    }
+
+    .lecture-card:hover {
+        transform: none;
+    }
+}
