@@ -181,5 +181,4 @@ Untuk Tugas 2 dan Tugas 3, informasi pengumpulan melalui Sikola mencakup nama, N
 
 - Repositori ini dibuat untuk pembelajaran dan bukan situs resmi Universitas Hasanuddin.
 - Hak atas publikasi, logo, dan media referensi mengikuti ketentuan pemilik serta lisensinya masing-masing.
-- Bantuan AI digunakan pada Tugas 3 untuk penyusunan contoh kode, ilustrasi sampul, dan terjemahan takarir.
 - Daftar tugas dan dokumentasi diperbarui sesuai perkembangan perkuliahan.
