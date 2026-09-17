@@ -175,11 +175,10 @@ Pada Tugas 3:
 
 Perubahan disimpan secara bertahap menggunakan commit yang menjelaskan pekerjaan pada setiap tahap. Pesan commit penyelesaian mengikuti ketentuan masing-masing modul.
 
-Untuk Tugas 2 dan Tugas 3, informasi pengumpulan melalui Sikola mencakup nama, NIM, dan tautan repositori.
+Tugas 1, Tugas 2, dan Tugas 3 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
 
 ## Catatan
 
 - Repositori ini dibuat untuk pembelajaran dan bukan situs resmi Universitas Hasanuddin.
 - Hak atas publikasi, logo, dan media referensi mengikuti ketentuan pemilik serta lisensinya masing-masing.
-- Bantuan AI digunakan pada Tugas 3 untuk penyusunan contoh kode, ilustrasi sampul, dan terjemahan takarir.
 - Daftar tugas dan dokumentasi diperbarui sesuai perkembangan perkuliahan.
