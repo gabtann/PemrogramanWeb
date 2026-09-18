@@ -12,12 +12,13 @@ Repositori ini berisi kumpulan tugas, latihan, dan proyek yang saya kerjakan sel
 
 ## Daftar Tugas
 
-| Folder | Berkas | Deskripsi |
-| --- | --- | --- |
-| Tugas 1 | `porto.html` | Portofolio pribadi menggunakan HTML. |
-| Tugas 1 | `01-tugas-arsitektur-dan-semantik.html` | Halaman utama portal publikasi artikel ilmiah mahasiswa menggunakan HTML semantik. |
-| Tugas 2 | `02-tugas-standardisasi-konten.html` | Daftar publikasi penelitian dosen Informatika Unhas dengan tabel kompleks, daftar bertingkat, diagram metodologi, dan entitas karakter. |
-| Tugas 3 | `03-tugas-media-dan-css.html` dan `03-tugas-style.css` | Kartu multimedia responsif dengan sampul, video, audio, serta penerapan CSS dan pola BEM. |
+| Folder  | Berkas                                                 | Deskripsi                                                                                                                               |
+| ------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Tugas 1 | `porto.html`                                           | Portofolio pribadi menggunakan HTML.                                                                                                    |
+| Tugas 1 | `01-tugas-arsitektur-dan-semantik.html`                | Halaman utama portal publikasi artikel ilmiah mahasiswa menggunakan HTML semantik.                                                      |
+| Tugas 2 | `02-tugas-standardisasi-konten.html`                   | Daftar publikasi penelitian dosen Informatika Unhas dengan tabel kompleks, daftar bertingkat, diagram metodologi, dan entitas karakter. |
+| Tugas 3 | `03-tugas-media-dan-css.html` dan `03-tugas-style.css` | Kartu multimedia responsif dengan sampul, video, audio, serta penerapan CSS dan pola BEM.                                               |
+| Tugas 4 | `04-tugas-tata-letak.html` dan `04-tugas-style.css`    | Portal jurnal ilmiah dengan penerapan Flexbox, CSS Grid, Bootstrap 5, dan tata letak responsif.                                         |
 
 ## Struktur Repositori
 
@@ -31,10 +32,13 @@ PemrogramanWeb/
 │   ├── 02-tugas-standardisasi-konten.html
 │   └── aset/
 │       └── logo-unhas.png
-└── Tugas 3/
-    ├── 03-tugas-media-dan-css.html
-    ├── 03-tugas-style.css
-    └── aset/
+├── Tugas 3/
+│   ├── 03-tugas-media-dan-css.html
+│   ├── 03-tugas-style.css
+│   └── aset/
+└── Tugas 4/
+    ├── 04-tugas-tata-letak.html
+    └── 04-tugas-style.css
 ```
 
 Folder `aset` pada Tugas 3 berisi gambar sampul, poster, video, audio, dan takarir yang digunakan pada halaman.
@@ -155,6 +159,117 @@ Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
 Selesaikan tugas mandiri modul 3
 ```
 
+## Tugas 4 — Penskalaan Tata Letak Modern dengan Grid, Flexbox, dan Bootstrap
+
+Tugas ini berupa prototipe portal jurnal ilmiah fakultas. Fokus utama tugas adalah penerapan tata letak modern menggunakan **Flexbox**, **CSS Grid**, dan **Bootstrap 5**, serta penerapan desain responsif untuk berbagai ukuran layar.
+
+Berkas utama tugas ini adalah:
+
+- `04-tugas-tata-letak.html`
+- `04-tugas-style.css`
+
+### Penerapan Flexbox
+
+Navigasi utama menggunakan Flexbox untuk mengatur posisi logo dan menu navigasi.
+
+Pada layar desktop dan tablet, menu ditampilkan secara horizontal. Pada layar ponsel, arah navigasi diubah menjadi vertikal menggunakan media query sehingga menu tetap mudah digunakan pada layar yang lebih sempit.
+
+### Penerapan CSS Grid
+
+Layout utama portal menggunakan CSS Grid dengan tiga bagian:
+
+- Kolom kiri untuk kategori jurnal dengan lebar tetap `200px`.
+- Kolom tengah untuk daftar publikasi yang menggunakan ruang fleksibel.
+- Kolom kanan dengan lebar `220px` untuk artikel terbaru dan informasi.
+
+Pada ukuran layar tablet, kolom kanan disembunyikan agar ruang untuk konten utama tetap cukup. Pada layar ponsel, layout berubah menjadi satu kolom.
+
+### Micro Grid pada Kartu Artikel
+
+Daftar publikasi menggunakan CSS Grid dengan:
+
+```css
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+```
+
+Pengaturan ini memungkinkan jumlah kartu menyesuaikan dengan lebar ruang yang tersedia. Pada layar yang lebih kecil, kartu dapat tersusun menjadi satu kolom.
+
+### Penerapan Bootstrap 5
+
+Bootstrap 5 digunakan sebagai bagian dari tampilan kartu artikel dan tombol. Bootstrap dimuat melalui CDN dengan atribut `integrity` dan `crossorigin`.
+
+Bootstrap digunakan bersama CSS buatan sendiri. CSS Grid dan Flexbox tetap digunakan untuk mengatur struktur utama halaman sesuai tujuan tugas.
+
+### Responsivitas
+
+Halaman diuji pada beberapa ukuran layar:
+
+- **Desktop:** layout tiga kolom dengan sidebar kiri, daftar publikasi, dan sidebar kanan.
+- **Tablet:** sidebar kanan disembunyikan sehingga layout menjadi dua kolom.
+- **Ponsel:** navigasi menjadi vertikal dan layout utama berubah menjadi satu kolom.
+
+Media query digunakan untuk menyesuaikan tata letak, jarak, dan ukuran elemen berdasarkan lebar layar.
+
+### Konten Publikasi
+
+Bagian publikasi menggunakan artikel jurnal yang diterbitkan pada **Jurnal Teknologi Informasi dan Ilmu Komputer (JTIIK)**.
+
+Tiga artikel yang ditampilkan adalah:
+
+1. **Penerapan Framework TOGAF ADM dalam Perancangan Arsitektur Enterprise di SMAN 17 Surabaya**
+   - Penulis: Salma Nabila, Siti Mukaromah, Doddy Ridwandono
+   - JTIIK, Vol. 12 No. 4, 2025
+   - DOI: `10.25126/jtiik.124`
+
+2. **Sistem Monitoring Budidaya Melon melalui Greenhouse Berbasis Internet of Things**
+   - Penulis: Meyti Eka Apriyani, Ade Ismail, Amelia Widya Andini
+   - JTIIK, Vol. 12 No. 1, 2025
+   - DOI: `10.25126/jtiik.2025129164`
+
+3. **Data Mining Pendidikan: Prediksi Gaya Belajar Mahasiswa Teknik Menggunakan Machine Learning**
+   - Penulis: Sumarlin, Dewi Anggraini
+   - JTIIK, Vol. 12 No. 3, 2025
+   - DOI: `10.25126/jtiik.2025129190`
+
+Setiap kartu artikel memiliki tombol **Baca Artikel** yang mengarah ke halaman artikel pada situs JTIIK.
+
+### Navigasi Halaman
+
+Portal memiliki beberapa bentuk navigasi:
+
+- Menu **Beranda** mengarah ke bagian awal halaman.
+- Menu **Jurnal** mengarah ke bagian publikasi.
+- Menu **Penulis** mengarah ke informasi identitas pada bagian bawah halaman.
+- Menu **Tentang** mengarah ke informasi institusi.
+- Bagian **Artikel Terbaru** menyediakan tautan langsung menuju kartu publikasi yang sesuai.
+
+Navigasi artikel menggunakan `id` pada elemen HTML sehingga pengguna dapat langsung berpindah ke bagian yang dituju.
+
+### Struktur Halaman
+
+Halaman Tugas 4 terdiri atas:
+
+- Header dan navigasi utama.
+- Sidebar kategori.
+- Bagian publikasi terbaru.
+- Kartu-kartu artikel jurnal.
+- Sidebar artikel terbaru dan informasi.
+- Footer yang memuat identitas dan informasi halaman.
+
+Halaman dibuat menggunakan HTML dan CSS dengan Bootstrap 5, tanpa JavaScript.
+
+### Sumber Tugas 4
+
+- PPT Modul 4: *Penskalaan Tata Letak Modern dengan Grid, Flexbox, dan Bootstrap*, sebagai acuan penerapan Flexbox, CSS Grid, responsive layout, dan Bootstrap 5.
+- Artikel jurnal pada Jurnal Teknologi Informasi dan Ilmu Komputer (JTIIK) sebagai sumber konten publikasi.
+- Informasi artikel dicantumkan berdasarkan halaman publikasi dan sumber jurnal yang digunakan.
+
+Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
+
+```text
+Selesaikan tugas mandiri modul 4
+```
+
 ## Cara Membuka
 
 1. Clone atau unduh repositori ini.
@@ -162,7 +277,8 @@ Selesaikan tugas mandiri modul 3
 3. Buka folder repositori menggunakan Visual Studio Code.
 4. Untuk Tugas 1 dan Tugas 2, buka berkas HTML melalui browser.
 5. Untuk Tugas 3, jalankan `03-tugas-media-dan-css.html` melalui ekstensi **Live Server** agar halaman dan takarir dimuat melalui server lokal.
-6. Pertahankan struktur folder agar jalur relatif menuju CSS dan seluruh aset tetap sesuai.
+6. Untuk Tugas 4, buka `04-tugas-tata-letak.html` melalui browser atau gunakan **Live Server** pada Visual Studio Code.
+7. Pertahankan struktur folder agar jalur relatif menuju CSS dan seluruh aset tetap sesuai.
 
 Pada Tugas 3:
 
@@ -171,14 +287,25 @@ Pada Tugas 3:
 - Jeda video sebelum memutar audio agar suara tidak terdengar bersamaan.
 - Ubah lebar jendela browser untuk melihat perubahan sampul dan tata letak.
 
+Pada Tugas 4:
+
+- Ubah lebar jendela browser untuk melihat perubahan tata letak.
+- Pada desktop, perhatikan tiga kolom pada layout utama.
+- Pada tablet, perhatikan perubahan menjadi dua kolom.
+- Pada ponsel, perhatikan perubahan menjadi satu kolom dan navigasi yang tersusun vertikal.
+- Gunakan menu navigasi dan bagian Artikel Terbaru untuk berpindah ke bagian halaman yang sesuai.
+
 ## Pengumpulan dan Riwayat Pengerjaan
 
 Perubahan disimpan secara bertahap menggunakan commit yang menjelaskan pekerjaan pada setiap tahap. Pesan commit penyelesaian mengikuti ketentuan masing-masing modul.
 
-Tugas 1, Tugas 2, dan Tugas 3 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
+Tugas 1, Tugas 2, Tugas 3, dan Tugas 4 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
+
+Riwayat commit digunakan untuk mendokumentasikan proses pengerjaan, sehingga perubahan tidak hanya disimpan dalam satu commit pada akhir pengerjaan.
 
 ## Catatan
 
 - Repositori ini dibuat untuk pembelajaran dan bukan situs resmi Universitas Hasanuddin.
 - Hak atas publikasi, logo, dan media referensi mengikuti ketentuan pemilik serta lisensinya masing-masing.
+- Konten artikel pada Tugas 4 digunakan sebagai sumber informasi untuk mengisi prototipe portal jurnal dan tidak berarti halaman tersebut merupakan bagian dari situs resmi JTIIK.
 - Daftar tugas dan dokumentasi diperbarui sesuai perkembangan perkuliahan.
