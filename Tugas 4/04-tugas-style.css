@@ -57,3 +57,26 @@ body {
 .right-sidebar {
     padding: 20px;
 }
+
+@media (max-width: 991px) {
+    .main-layout {
+        grid-template-columns: 200px minmax(0, 1fr);
+    }
+
+    .right-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .sidebar,
+    .articles,
+    .right-sidebar {
+        padding: 16px;
+    }
+}
