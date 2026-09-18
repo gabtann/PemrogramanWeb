@@ -1,9 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Jurnal Ilmiah Fakultas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta
+        name="description"
+        content="Portal jurnal ilmiah sederhana yang menampilkan publikasi bidang teknologi informasi dan ilmu komputer."
+    >
+    <meta name="author" content="Gabriel Tan">
+
+    <title>Portal Jurnal Ilmiah Fakultas | Modul 4</title>
 
     <!-- Bootstrap 5 -->
     <link
@@ -25,7 +33,7 @@
 
             <ul class="nav-menu">
                 <li><a href="#">Beranda</a></li>
-                <li><a href="#">Jurnal</a></li>
+                <li><a href="#publikasi">Jurnal</a></li>
                 <li><a href="#">Penulis</a></li>
                 <li><a href="#">Tentang</a></li>
             </ul>
@@ -34,80 +42,172 @@
 
     <main class="main-layout">
 
-        <!-- Kolom kiri -->
         <aside class="sidebar">
             <h2>Kategori</h2>
 
             <ul>
-                <li><a href="#">Teknologi Informasi</a></li>
                 <li><a href="#">Sistem Informasi</a></li>
-                <li><a href="#">Kecerdasan Buatan</a></li>
-                <li><a href="#">Jaringan Komputer</a></li>
+                <li><a href="#">Internet of Things</a></li>
+                <li><a href="#">Machine Learning</a></li>
+                <li><a href="#">Teknologi Informasi</a></li>
             </ul>
         </aside>
 
-        <!-- Kolom tengah -->
-        <section class="articles">
+        <section id="publikasi" class="articles">
             <h1>Publikasi Terbaru</h1>
 
             <div class="article-grid">
 
                 <article class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Sistem Informasi Akademik Berbasis Web</h2>
+                        <h2 class="card-title">
+                            Penerapan Framework TOGAF ADM dalam Perancangan Arsitektur Enterprise di SMAN 17 Surabaya
+                        </h2>
+
                         <p class="card-text">
-                            Penelitian mengenai pengembangan sistem informasi
-                            untuk mendukung layanan akademik fakultas.
+                            Penelitian ini membahas perancangan arsitektur enterprise
+                            menggunakan framework TOGAF ADM untuk mendukung pengembangan
+                            sistem informasi di SMAN 17 Surabaya.
                         </p>
-                        <a href="#" class="btn btn-primary">Baca Artikel</a>
+
+                        <p class="card-text">
+                            <strong>Penulis:</strong> Salma Nabila,
+                            Siti Mukaromah, Doddy Ridwandono
+                        </p>
+
+                        <p class="card-text">
+                            JTIIK, Vol. 12 No. 4, 2025
+                        </p>
+
+                        <p class="card-text">
+                            <strong>DOI:</strong> 10.25126/jtiik.124
+                        </p>
+
+                        <a href="https://jtiik.ub.ac.id/index.php/jtiik/article/view/9892" class="btn btn-primary">
+                            Baca Artikel
+                        </a>
                     </div>
                 </article>
 
                 <article class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Implementasi Internet of Things</h2>
+                        <h2 class="card-title">
+                            Sistem Monitoring Budidaya Melon melalui Greenhouse Berbasis Internet of Things
+                        </h2>
+
                         <p class="card-text">
-                            Penelitian mengenai penerapan Internet of Things
-                            dalam pemantauan perangkat secara real-time.
+                            Penelitian ini membahas sistem berbasis Internet of Things
+                            untuk memantau dan mengendalikan kondisi greenhouse dalam
+                            budidaya tanaman melon secara otomatis.
                         </p>
-                        <a href="#" class="btn btn-primary">Baca Artikel</a>
+
+                        <p class="card-text">
+                            <strong>Penulis:</strong> Meyti Eka Apriyani,
+                            Ade Ismail, Amelia Widya Andini
+                        </p>
+
+                        <p class="card-text">
+                            JTIIK, Vol. 12 No. 1, 2025
+                        </p>
+
+                        <p class="card-text">
+                            <strong>DOI:</strong> 10.25126/jtiik.2025129164
+                        </p>
+
+                        <a href="https://jtiik.ub.ac.id/index.php/jtiik/article/view/9164" class="btn btn-primary">
+                            Baca Artikel
+                        </a>
                     </div>
                 </article>
 
                 <article class="card">
                     <div class="card-body">
-                        <h2 class="card-title">Analisis Data untuk Pendidikan</h2>
+                        <h2 class="card-title">
+                            Data Mining Pendidikan: Prediksi Gaya Belajar Mahasiswa Teknik Menggunakan Machine Learning
+                        </h2>
+
                         <p class="card-text">
-                            Pemanfaatan analisis data untuk membantu proses
-                            pengambilan keputusan dalam bidang pendidikan.
+                            Penelitian ini membandingkan beberapa algoritma machine
+                            learning untuk memprediksi gaya belajar mahasiswa teknik
+                            berdasarkan data perilaku belajar.
                         </p>
-                        <a href="#" class="btn btn-primary">Baca Artikel</a>
+
+                        <p class="card-text">
+                            <strong>Penulis:</strong> Sumarlin,
+                            Dewi Anggraini
+                        </p>
+
+                        <p class="card-text">
+                            JTIIK, Vol. 12 No. 3, 2025
+                        </p>
+
+                        <p class="card-text">
+                            <strong>DOI:</strong> 10.25126/jtiik.2025129190
+                        </p>
+
+                        <a href="https://jtiik.ub.ac.id/index.php/jtiik/article/view/9190" class="btn btn-primary">
+                            Baca Artikel
+                        </a>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- Kolom kanan -->
         <aside class="right-sidebar">
             <h2>Artikel Terbaru</h2>
 
             <ul>
-                <li><a href="#">Teknologi Cloud Computing</a></li>
-                <li><a href="#">Keamanan Jaringan</a></li>
-                <li><a href="#">Machine Learning</a></li>
+                <li>
+                    <a href="#">
+                        TOGAF ADM dan Arsitektur Enterprise
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        IoT untuk Monitoring Greenhouse
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Machine Learning untuk Pendidikan
+                    </a>
+                </li>
             </ul>
 
-            <h2>Statistik</h2>
-            <p>125 Publikasi</p>
-            <p>48 Penulis</p>
+            <h2>Informasi</h2>
+
+            <p>3 Publikasi</p>
+            <p>3 Topik Informatika</p>
+            <p>Tahun Publikasi: 2025</p>
         </aside>
 
     </main>
 
-    <footer>
-        <p>&copy; 2026 Portal Jurnal Ilmiah Fakultas</p>
+    <footer class="page-footer">
+        <p>
+            &copy; 2026 Gabriel Tan · D121241071 · Kelas B
+        </p>
+
+        <p>
+            Teknik Informatika, Universitas Hasanuddin
+        </p>
+
+        <p>
+            Tugas Mandiri Modul 4 · Penskalaan Tata Letak Modern
+        </p>
+
+        <p>
+            Sumber artikel: Jurnal Teknologi Informasi dan Ilmu Komputer (JTIIK).
+        </p>
+
+        <p>
+            Halaman pembelajaran mahasiswa, bukan platform resmi universitas.
+        </p>
     </footer>
 
 </body>
+
 </html>
