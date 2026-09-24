@@ -20,10 +20,24 @@ class Transaction
             $_SESSION['balance'] = 0;
         }
 
-        return match ($this->type) {
+        if (!isset($_SESSION['transactions'])) {
+            $_SESSION['transactions'] = [];
+        }
+
+        $result = match ($this->type) {
             'deposit' => $this->processDeposit(),
             'withdrawal' => $this->processWithdrawal(),
         };
+
+        if ($result) {
+            $_SESSION['transactions'][] = [
+                'id' => $this->id,
+                'type' => $this->type,
+                'amount' => $this->amount,
+                'balance_after' => $_SESSION['balance'],
+            ];
+        }
+        return $result;
     }
     
     private function processWithdrawal(): bool
