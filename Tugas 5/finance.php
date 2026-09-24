@@ -6,6 +6,14 @@ require_once 'Transaction.php';
 
 session_start();
 
+if (!isset($_SESSION['balance'])) {
+    $_SESSION['balance'] = 0;
+}
+
+if (!isset($_SESSION['transactions'])) {
+    $_SESSION['transactions'] = [];
+}
+
 $success = false;
 
 if (!isset($_SESSION['csrf_token'])) {
@@ -64,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
         
         <?php if ($success): ?>
-            <p>Transaksi berhasil! Saldo saat ini: <?= htmlspecialchars($_SESSION['balance']) ?></p>
+            <p>Transaksi berhasil! Saldo saat ini: <?= htmlspecialchars((string)$_SESSION['balance']) ?></p>
         <?php else: ?>
             <p>Transaksi gagal! Saldo tidak mencukupi.</p>
         <?php endif; ?>
@@ -76,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php foreach ($_SESSION['transactions'] as $transaction): ?>
             <p>ID: <?= htmlspecialchars($transaction['id']) ?></p>
             <p>Jenis: <?= htmlspecialchars($transaction['type']) ?></p>
-            <p>Jumlah: <?= htmlspecialchars($transaction['amount']) ?></p>
-            <p>Saldo Setelah Transaksi: <?= htmlspecialchars($transaction['balance_after']) ?></p>
+            <p>Jumlah: <?= htmlspecialchars((string)$transaction['amount']) ?></p>
+            <p>Saldo Setelah Transaksi: <?= htmlspecialchars((string)$transaction['balance_after']) ?></p>
     <?php endforeach; ?>
 
     
