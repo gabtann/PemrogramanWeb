@@ -52,7 +52,7 @@ PemrogramanWeb/
 
 Folder `aset` pada Tugas 3 berisi gambar sampul, poster, video, audio, dan takarir yang digunakan pada halaman.
 
-## Tugas 1 — Arsitektur Web dan HTML Semantik
+## Tugas 1 — Tugas Praktik: Portal Artikel Ilmiah Berstandar W3C
 
 Tugas ini berfokus pada penyusunan halaman utama portal publikasi artikel ilmiah mahasiswa. Struktur halaman ditujukan agar konten mudah dibaca, dipahami mesin pencari, dan diakses oleh pengguna pembaca layar.
 
@@ -76,7 +76,7 @@ Selesaikan Tugas Mandiri modul 1
 
 Tautan repositori dikumpulkan melalui Sikola dalam bentuk PDF.
 
-## Tugas 2 — Standardisasi Kode dan Pengorganisasian Konten
+## Tugas 2 — Tugas Mandiri: Halaman Daftar Publikasi Penelitian Dosen
 
 Halaman ini menyajikan empat publikasi asli tahun 2024 yang melibatkan dosen Informatika Universitas Hasanuddin. Nama dosen ditampilkan beserta gelarnya, dan judul publikasi ditautkan melalui DOI untuk memudahkan penelusuran sumber.
 
@@ -106,7 +106,7 @@ Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
 Selesaikan tugas mandiri modul 2
 ```
 
-## Tugas 3 — Rekayasa Media Digital dan Dasar CSS
+## Tugas 3 — Tugas Mandiri: Pemutar Media Kuliah Responsif
 
 Tugas ini berupa kartu multimedia responsif dengan tema **Mengenal Browser dan Media Web**. Halaman memuat ilustrasi sampul, video pengenalan browser, audio dari narasi video, serta rangkuman materi.
 
@@ -168,7 +168,7 @@ Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
 Selesaikan tugas mandiri modul 3
 ```
 
-## Tugas 4 — Penskalaan Tata Letak Modern dengan Grid, Flexbox, dan Bootstrap
+## Tugas 4 — Tugas Mandiri: Portal Jurnal Ilmiah Multi-Kolom
 
 Tugas ini berupa prototipe portal jurnal ilmiah fakultas. Fokus utama tugas adalah penerapan tata letak modern menggunakan **Flexbox**, **CSS Grid**, dan **Bootstrap 5**, serta penerapan desain responsif untuk berbagai ukuran layar.
 
@@ -279,7 +279,7 @@ Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
 Selesaikan tugas mandiri modul 4
 ```
 
-## Tugas 5 — Pemrograman Sisi Server Menggunakan PHP Modern
+## Tugas 5 — Tugas Mandiri: Sistem Manajemen Keuangan Sederhana
 
 Tugas ini berupa prototipe **Sistem Manajemen Keuangan Sederhana** menggunakan PHP sebagai pemrograman sisi server.
 
@@ -444,7 +444,7 @@ Pada Tugas 5:
 
 - Pastikan PHP dapat dijalankan melalui terminal.
 - Jalankan server lokal dari folder `Tugas 5`.
-- Buka `finance.php` melalui `http://localhost:8000`.
+- Buka `finance.php` melalui `http://localhost:8000/finance.php`.
 - Coba transaksi deposit untuk menambah saldo.
 - Coba withdrawal dengan saldo yang mencukupi.
 - Coba withdrawal dengan jumlah yang melebihi saldo untuk melihat proses penolakan transaksi.
