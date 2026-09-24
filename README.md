@@ -12,33 +12,42 @@ Repositori ini berisi kumpulan tugas, latihan, dan proyek yang saya kerjakan sel
 
 ## Daftar Tugas
 
-| Folder  | Berkas                                                 | Deskripsi                                                                                                                               |
-| ------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Tugas 1 | `porto.html`                                           | Portofolio pribadi menggunakan HTML.                                                                                                    |
-| Tugas 1 | `01-tugas-arsitektur-dan-semantik.html`                | Halaman utama portal publikasi artikel ilmiah mahasiswa menggunakan HTML semantik.                                                      |
-| Tugas 2 | `02-tugas-standardisasi-konten.html`                   | Daftar publikasi penelitian dosen Informatika Unhas dengan tabel kompleks, daftar bertingkat, diagram metodologi, dan entitas karakter. |
-| Tugas 3 | `03-tugas-media-dan-css.html` dan `03-tugas-style.css` | Kartu multimedia responsif dengan sampul, video, audio, serta penerapan CSS dan pola BEM.                                               |
-| Tugas 4 | `04-tugas-tata-letak.html` dan `04-tugas-style.css`    | Portal jurnal ilmiah dengan penerapan Flexbox, CSS Grid, Bootstrap 5, dan tata letak responsif.                                         |
+| Folder | Berkas | Deskripsi |
+| ------- | ------ | --------- |
+| Tugas 1 | `porto.html` | Portofolio pribadi menggunakan HTML. |
+| Tugas 1 | `01-tugas-arsitektur-dan-semantik.html` | Halaman utama portal publikasi artikel ilmiah mahasiswa menggunakan HTML semantik. |
+| Tugas 2 | `02-tugas-standardisasi-konten.html` | Daftar publikasi penelitian dosen Informatika Unhas dengan tabel kompleks, daftar bertingkat, diagram metodologi, dan entitas karakter. |
+| Tugas 3 | `03-tugas-media-dan-css.html` dan `03-tugas-style.css` | Kartu multimedia responsif dengan sampul, video, audio, serta penerapan CSS dan pola BEM. |
+| Tugas 4 | `04-tugas-tata-letak.html` dan `04-tugas-style.css` | Portal jurnal ilmiah dengan penerapan Flexbox, CSS Grid, Bootstrap 5, dan tata letak responsif. |
+| Tugas 5 | `Transaction.php` dan `finance.php` | Sistem manajemen keuangan sederhana menggunakan PHP sisi server dengan fitur deposit, withdrawal, session, validasi transaksi, CSRF protection, dan riwayat transaksi. |
 
 ## Struktur Repositori
 
 ```text
 PemrogramanWeb/
 ├── README.md
+│
 ├── Tugas 1/
 │   ├── porto.html
 │   └── 01-tugas-arsitektur-dan-semantik.html
+│
 ├── Tugas 2/
 │   ├── 02-tugas-standardisasi-konten.html
 │   └── aset/
 │       └── logo-unhas.png
+│
 ├── Tugas 3/
 │   ├── 03-tugas-media-dan-css.html
 │   ├── 03-tugas-style.css
 │   └── aset/
-└── Tugas 4/
-    ├── 04-tugas-tata-letak.html
-    └── 04-tugas-style.css
+│
+├── Tugas 4/
+│   ├── 04-tugas-tata-letak.html
+│   └── 04-tugas-style.css
+│
+└── Tugas 5/
+    ├── Transaction.php
+    └── finance.php
 ```
 
 Folder `aset` pada Tugas 3 berisi gambar sampul, poster, video, audio, dan takarir yang digunakan pada halaman.
@@ -270,15 +279,147 @@ Pesan commit yang ditentukan untuk penyelesaian tugas adalah:
 Selesaikan tugas mandiri modul 4
 ```
 
+## Tugas 5 — Pemrograman Sisi Server Menggunakan PHP Modern
+
+Tugas ini berupa prototipe **Sistem Manajemen Keuangan Sederhana** menggunakan PHP sebagai pemrograman sisi server.
+
+Sistem menyediakan proses **deposit** dan **withdrawal**, menyimpan saldo serta riwayat transaksi menggunakan session, dan menerapkan validasi serta perlindungan keamanan dasar.
+
+### Berkas Utama
+
+Berkas yang digunakan pada tugas ini adalah:
+
+- `Transaction.php`
+- `finance.php`
+
+### Penerapan PHP Modern
+
+Tugas ini menerapkan beberapa konsep pemrograman PHP modern, yaitu:
+
+- `declare(strict_types=1)` untuk mengaktifkan strict typing.
+- Constructor property promotion pada class `Transaction`.
+- Encapsulation dengan properti `private`.
+- `match` expression untuk menentukan jenis transaksi.
+- Session untuk menyimpan saldo dan riwayat transaksi.
+- Validasi data transaksi sebelum diproses.
+
+### Class `Transaction`
+
+Class `Transaction` digunakan untuk merepresentasikan transaksi keuangan.
+
+Class memiliki properti:
+
+- `id`
+- `type`
+- `amount`
+
+Ketiga properti dibuat menggunakan constructor property promotion dan memiliki akses `private`.
+
+Method `process()` digunakan untuk memproses transaksi berdasarkan jenis transaksi.
+
+- **Deposit** menambahkan jumlah transaksi ke saldo.
+- **Withdrawal** hanya dapat dilakukan jika saldo mencukupi.
+- Transaksi yang berhasil disimpan ke dalam riwayat transaksi pada session.
+
+### Validasi Transaksi
+
+Form transaksi melakukan beberapa validasi sebelum transaksi diproses:
+
+- Jenis transaksi harus berupa `deposit` atau `withdrawal`.
+- Jumlah transaksi harus lebih besar dari `0`.
+- Withdrawal ditolak apabila saldo tidak mencukupi.
+
+Validasi dilakukan pada sisi server sehingga data dari form tidak langsung dipercaya.
+
+### Session dan Manajemen State
+
+Karena HTTP bersifat stateless, session digunakan untuk mempertahankan data selama pengguna berinteraksi dengan aplikasi.
+
+Data yang disimpan dalam session meliputi:
+
+- Saldo saat ini.
+- Riwayat transaksi.
+- Token CSRF.
+
+### Keamanan
+
+Tugas ini menerapkan beberapa mekanisme keamanan dasar:
+
+- **CSRF protection** menggunakan token yang disimpan dalam session.
+- Token CSRF diverifikasi menggunakan `hash_equals()` ketika form dikirim.
+- Data yang ditampilkan kembali ke halaman diproses menggunakan `htmlspecialchars()` untuk mengurangi risiko XSS.
+- Input transaksi divalidasi sebelum diproses.
+
+### Riwayat Transaksi
+
+Setiap transaksi yang berhasil akan dicatat dalam session dan menampilkan:
+
+- ID transaksi.
+- Jenis transaksi.
+- Jumlah transaksi.
+- Saldo setelah transaksi.
+
+Transaksi withdrawal yang gagal karena saldo tidak mencukupi tidak ditambahkan ke riwayat.
+
+### Pengujian
+
+Aplikasi diuji dengan beberapa skenario transaksi:
+
+- Deposit berhasil menambah saldo.
+- Beberapa deposit dapat dilakukan secara berurutan.
+- Withdrawal berhasil apabila saldo mencukupi.
+- Withdrawal ditolak apabila saldo tidak mencukupi.
+- Riwayat transaksi menampilkan transaksi yang berhasil.
+- Validasi jumlah transaksi menolak nilai nol atau negatif.
+
+### Sumber Tugas 5
+
+- PPT Modul 5: *Pemrograman Sisi Server Menggunakan PHP Modern*, sebagai acuan penerapan PHP sisi server, strict types, session, OOP, validasi, CSRF, dan perlindungan XSS.
+- Ketentuan tugas Sistem Manajemen Keuangan Sederhana pada Modul 5.
+
+Pesan commit penyelesaian tugas adalah:
+
+```text
+Selesaikan tugas mandiri modul 5
+```
+
 ## Cara Membuka
 
 1. Clone atau unduh repositori ini.
+
 2. Jika mengunduh ZIP, ekstrak terlebih dahulu.
+
 3. Buka folder repositori menggunakan Visual Studio Code.
+
 4. Untuk Tugas 1 dan Tugas 2, buka berkas HTML melalui browser.
+
 5. Untuk Tugas 3, jalankan `03-tugas-media-dan-css.html` melalui ekstensi **Live Server** agar halaman dan takarir dimuat melalui server lokal.
+
 6. Untuk Tugas 4, buka `04-tugas-tata-letak.html` melalui browser atau gunakan **Live Server** pada Visual Studio Code.
-7. Pertahankan struktur folder agar jalur relatif menuju CSS dan seluruh aset tetap sesuai.
+
+7. Untuk Tugas 5, pastikan PHP sudah terpasang dan dapat dijalankan melalui terminal.
+
+8. Masuk ke folder Tugas 5:
+
+```text
+cd "Tugas 5"
+```
+
+9. Jalankan PHP built-in development server:
+
+```text
+php -S localhost:8000
+```
+
+10. Buka halaman berikut pada browser:
+
+```text
+http://localhost:8000/finance.php
+```
+
+11. Gunakan form untuk mencoba deposit dan withdrawal serta melihat saldo dan riwayat transaksi.
+
+### Tugas 3
 
 Pada Tugas 3:
 
@@ -286,6 +427,8 @@ Pada Tugas 3:
 - Aktifkan takarir melalui menu yang tersedia pada pemutar video.
 - Jeda video sebelum memutar audio agar suara tidak terdengar bersamaan.
 - Ubah lebar jendela browser untuk melihat perubahan sampul dan tata letak.
+
+### Tugas 4
 
 Pada Tugas 4:
 
@@ -295,17 +438,42 @@ Pada Tugas 4:
 - Pada ponsel, perhatikan perubahan menjadi satu kolom dan navigasi yang tersusun vertikal.
 - Gunakan menu navigasi dan bagian Artikel Terbaru untuk berpindah ke bagian halaman yang sesuai.
 
+### Tugas 5
+
+Pada Tugas 5:
+
+- Pastikan PHP dapat dijalankan melalui terminal.
+- Jalankan server lokal dari folder `Tugas 5`.
+- Buka `finance.php` melalui `http://localhost:8000`.
+- Coba transaksi deposit untuk menambah saldo.
+- Coba withdrawal dengan saldo yang mencukupi.
+- Coba withdrawal dengan jumlah yang melebihi saldo untuk melihat proses penolakan transaksi.
+- Periksa riwayat transaksi setelah melakukan transaksi.
+
 ## Pengumpulan dan Riwayat Pengerjaan
 
 Perubahan disimpan secara bertahap menggunakan commit yang menjelaskan pekerjaan pada setiap tahap. Pesan commit penyelesaian mengikuti ketentuan masing-masing modul.
 
-Tugas 1, Tugas 2, Tugas 3, dan Tugas 4 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
+Tugas 1, Tugas 2, Tugas 3, Tugas 4, dan Tugas 5 dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repositori. Format berkas pengumpulan mengikuti ketentuan masing-masing tugas.
 
 Riwayat commit digunakan untuk mendokumentasikan proses pengerjaan, sehingga perubahan tidak hanya disimpan dalam satu commit pada akhir pengerjaan.
+
+### Riwayat Commit Tugas 5
+
+Pengerjaan Tugas 5 dilakukan secara bertahap melalui lima commit:
+
+1. `Tambah class Transaction`
+2. `Tambah proses transaksi`
+3. `Tambah halaman finance`
+4. `Tambah validasi dan keamanan transaksi`
+5. `Selesaikan tugas mandiri modul 5`
+
+Riwayat tersebut mendokumentasikan proses pengerjaan mulai dari pembuatan class `Transaction`, implementasi proses transaksi, pembuatan halaman finance, penerapan validasi dan keamanan, hingga penyelesaian tugas.
 
 ## Catatan
 
 - Repositori ini dibuat untuk pembelajaran dan bukan situs resmi Universitas Hasanuddin.
 - Hak atas publikasi, logo, dan media referensi mengikuti ketentuan pemilik serta lisensinya masing-masing.
 - Konten artikel pada Tugas 4 digunakan sebagai sumber informasi untuk mengisi prototipe portal jurnal dan tidak berarti halaman tersebut merupakan bagian dari situs resmi JTIIK.
+- Aplikasi pada Tugas 5 merupakan prototipe pembelajaran dan bukan aplikasi layanan keuangan nyata.
 - Daftar tugas dan dokumentasi diperbarui sesuai perkembangan perkuliahan.
