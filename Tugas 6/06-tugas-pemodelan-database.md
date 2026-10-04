@@ -74,3 +74,93 @@ Menyimpan riwayat peminjaman dan pengembalian buku oleh mahasiswa.
    - Kardinalitas: **1 : N**.
 
 Dengan demikian, `penerbit_id`, `mahasiswa_id`, dan `buku_id` digunakan sebagai foreign key untuk menghubungkan tabel-tabel yang saling berelasi.
+
+## 2. Simulasi Normalisasi
+
+Normalisasi dilakukan untuk mengurangi redundansi data dan memastikan setiap atribut bergantung pada kunci yang tepat. Proses normalisasi pada sistem E-Library dilakukan dari bentuk tidak ternormalisasi (UNF) hingga bentuk normal ketiga (3NF).
+
+### 2.1 Unnormalized Form (UNF)
+
+Pada kondisi awal, data peminjaman dapat disimpan dalam satu struktur yang mencampurkan data mahasiswa, buku, penerbit, dan transaksi.
+
+Contoh data dalam bentuk UNF:
+
+| ID Transaksi | NIM | Nama Mahasiswa | Buku | Penerbit | Tanggal Pinjam | Tanggal Jatuh Tempo | Tanggal Kembali |
+|---|---|---|---|---|---|---|---|
+| TRX001 | D121241071 | Gabriel Tan | Basis Data, Pemrograman Web | Informatika Press, Tech Publisher | 2026-09-20 | 2026-09-27 | 2026-09-26 |
+
+Bentuk tersebut belum memenuhi 1NF karena satu transaksi dapat menyimpan lebih dari satu buku dan beberapa nilai dalam satu atribut.
+
+### 2.2 First Normal Form (1NF)
+
+Untuk mencapai 1NF, setiap atribut harus memiliki nilai yang atomik dan tidak boleh terdapat kelompok data berulang dalam satu kolom.
+
+Data peminjaman dipecah sehingga setiap baris hanya mewakili satu buku yang dipinjam.
+
+| ID Transaksi | NIM | Nama Mahasiswa | ID Buku | Judul Buku | Penerbit | Tanggal Pinjam | Tanggal Jatuh Tempo | Tanggal Kembali |
+|---|---|---|---|---|---|---|---|---|
+| TRX001 | D121241071 | Gabriel Tan | B001 | Basis Data | Informatika Press | 2026-09-20 | 2026-09-27 | 2026-09-26 |
+| TRX002 | D121241071 | Gabriel Tan | B002 | Pemrograman Web | Tech Publisher | 2026-09-20 | 2026-09-27 | 2026-09-26 |
+
+Dengan demikian, setiap nilai pada tabel sudah bersifat atomik. Namun, masih terdapat redundansi data karena informasi mahasiswa dan transaksi yang sama berulang pada beberapa baris.
+
+### 2.3 Second Normal Form (2NF)
+
+Untuk mencapai 2NF, tabel harus sudah memenuhi 1NF dan setiap atribut non-key harus bergantung sepenuhnya pada primary key.
+
+Pada data 1NF, setiap baris memiliki `ID Transaksi` yang unik sebagai primary key. Namun, data mahasiswa dan buku masih disimpan bersama data transaksi sehingga terjadi redundansi ketika mahasiswa melakukan beberapa transaksi atau buku yang sama dipinjam pada waktu berbeda.
+
+Data kemudian dipisahkan menjadi:
+
+**Tabel Mahasiswa**
+
+| NIM | Nama Mahasiswa |
+|---|---|
+| D121241071 | Gabriel Tan |
+
+**Tabel Buku**
+
+| ID Buku | Judul Buku | Penerbit |
+|---|---|---|
+| B001 | Basis Data | Informatika Press |
+| B002 | Pemrograman Web | Tech Publisher |
+
+**Tabel Transaksi**
+
+| ID Transaksi | NIM | ID Buku | Tanggal Pinjam | Tanggal Jatuh Tempo | Tanggal Kembali |
+|---|---|---|---|---|---|
+| TRX001 | D121241071 | B001 | 2026-09-20 | 2026-09-27 | 2026-09-26 |
+| TRX002 | D121241071 | B002 | 2026-09-20 | 2026-09-27 | 2026-09-26 |
+
+Pada tahap ini, atribut mahasiswa bergantung pada identitas mahasiswa, atribut buku bergantung pada identitas buku, sedangkan atribut peminjaman bergantung pada ID Transaksi.
+
+### 2.4 Third Normal Form (3NF)
+
+Untuk mencapai 3NF, tabel harus sudah memenuhi 2NF dan tidak boleh terdapat ketergantungan transitif, yaitu atribut non-key bergantung pada atribut non-key lainnya.
+
+Pada tabel Buku, informasi penerbit dipisahkan ke dalam tabel tersendiri karena data penerbit merupakan entitas yang dapat digunakan oleh banyak buku.
+
+**Tabel Penerbit**
+
+| ID Penerbit | Nama Penerbit |
+|---|---|
+| P001 | Informatika Press |
+| P002 | Tech Publisher |
+
+**Tabel Buku**
+
+| ID Buku | Judul Buku | ID Penerbit |
+|---|---|---|
+| B001 | Basis Data | P001 |
+| B002 | Pemrograman Web | P002 |
+
+Dengan pemisahan tersebut, `nama_penerbit` tidak lagi disimpan berulang pada tabel Buku. Informasi penerbit cukup disimpan satu kali pada tabel Penerbit dan dihubungkan melalui `penerbit_id`.
+
+Hasil akhir normalisasi 3NF menghasilkan pemisahan data menjadi entitas:
+
+- **Mahasiswa**
+- **Penerbit**
+- **Buku**
+- **Transaksi Peminjaman**
+
+Struktur tersebut mengurangi redundansi data dan memastikan setiap atribut berada pada entitas yang sesuai.
