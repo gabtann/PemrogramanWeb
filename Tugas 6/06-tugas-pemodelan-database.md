@@ -108,22 +108,9 @@ Dengan demikian, setiap nilai pada tabel sudah bersifat atomik. Namun, masih ter
 
 Untuk mencapai 2NF, tabel harus sudah memenuhi 1NF dan setiap atribut non-key harus bergantung sepenuhnya pada primary key.
 
-Pada data 1NF, setiap baris memiliki `ID Transaksi` yang unik sebagai primary key. Namun, data mahasiswa dan buku masih disimpan bersama data transaksi sehingga terjadi redundansi ketika mahasiswa melakukan beberapa transaksi atau buku yang sama dipinjam pada waktu berbeda.
+Pada model E-Library ini, `ID Transaksi` digunakan sebagai primary key tunggal pada tabel transaksi. Karena tidak menggunakan primary key gabungan, tidak terdapat ketergantungan parsial terhadap sebagian dari primary key. Dengan demikian, tabel pada tahap 1NF sudah memenuhi 2NF.
 
-Data kemudian dipisahkan menjadi:
-
-**Tabel Mahasiswa**
-
-| NIM | Nama Mahasiswa |
-|---|---|
-| D121241071 | Gabriel Tan |
-
-**Tabel Buku**
-
-| ID Buku | Judul Buku | Penerbit |
-|---|---|---|
-| B001 | Basis Data | Informatika Press |
-| B002 | Pemrograman Web | Tech Publisher |
+Meskipun demikian, pada tahap ini masih terdapat redundansi karena data mahasiswa dan data buku masih disimpan bersama data transaksi. Kondisi tersebut akan diselesaikan pada tahap 3NF dengan memisahkan entitas yang memiliki atribut dan identitasnya sendiri.
 
 **Tabel Transaksi**
 
@@ -132,7 +119,7 @@ Data kemudian dipisahkan menjadi:
 | TRX001 | D121241071 | B001 | 2026-09-20 | 2026-09-27 | 2026-09-26 |
 | TRX002 | D121241071 | B002 | 2026-09-20 | 2026-09-27 | 2026-09-26 |
 
-Pada tahap ini, atribut mahasiswa bergantung pada identitas mahasiswa, atribut buku bergantung pada identitas buku, sedangkan atribut peminjaman bergantung pada ID Transaksi.
+Dengan demikian, hasil pada tahap 2NF tetap menggunakan struktur tabel 1NF, tetapi sudah tidak memiliki ketergantungan parsial karena primary key yang digunakan adalah satu atribut, yaitu `ID Transaksi`.
 
 ### 2.4 Third Normal Form (3NF)
 
