@@ -20,13 +20,14 @@ Repositori ini berisi kumpulan tugas dan latihan yang dikerjakan selama mengikut
 | Tugas 4 | `Tugas 4/` | `04-tugas-tata-letak.html`, `04-tugas-style.css` | Flexbox, CSS Grid, Bootstrap 5, dan responsive layout |
 | Tugas 5 | `Tugas 5/` | `Transaction.php`, `finance.php` | PHP sisi server, OOP, session, validasi, dan keamanan |
 | Tugas 6 | `Tugas 6/` | `06-tugas-pemodelan-database.md` | ERD, normalisasi basis data, tabel final, dan Mermaid |
+| Tugas 7 | `Tugas 7/` | `GuestBook.php`, `guestbook.php` | PHP PDO, database MySQL, CRUD dasar, validasi, dan keamanan formulir |
 
 ## Struktur Repositori
 
 ```text
 PemrogramanWeb/
 ├── README.md
-│
+├── .gitignore
 ├── Tugas 1/
 │   ├── porto.html
 │   └── 01-tugas-arsitektur-dan-semantik.html
@@ -49,8 +50,12 @@ PemrogramanWeb/
 │   ├── Transaction.php
 │   └── finance.php
 │
-└── Tugas 6/
-    └── 06-tugas-pemodelan-database.md
+├── Tugas 6/
+│   └── 06-tugas-pemodelan-database.md
+│
+└── Tugas 7/
+    ├── GuestBook.php
+    └── guestbook.php
 ```
 
 Folder `aset` pada Tugas 3 berisi media yang digunakan pada halaman, seperti gambar sampul, poster, video, audio, dan takarir.
@@ -491,6 +496,88 @@ Pengerjaan Tugas 6 dilakukan secara bertahap melalui empat commit:
 
 Commit terakhir mencakup review, koreksi normalisasi, dan penyelesaian akhir tugas.
 
+## Tugas 7 — Tugas Mandiri: Buku Tamu Berbasis PDO
+
+Tugas 7 berupa aplikasi **Buku Tamu Digital** menggunakan PHP dan PDO untuk mengelola pesan pengunjung yang disimpan dalam basis data MySQL.
+
+### Berkas Utama
+
+- `Tugas 7/GuestBook.php`
+- `Tugas 7/guestbook.php`
+
+### Struktur Database
+
+Aplikasi menggunakan database `buku_tamu_db` dengan tabel `buku_tamu`.
+
+Tabel tersebut menyimpan data:
+
+- `id` sebagai primary key dengan nilai auto-increment.
+- `nama` untuk nama pengunjung.
+- `email` untuk alamat email pengunjung.
+- `pesan` untuk isi pesan.
+- `tanggal_kirim` untuk mencatat waktu pengiriman pesan.
+
+### Penerapan PHP dan PDO
+
+- Class `GuestBook` digunakan untuk mengelola operasi database.
+- Constructor menerima objek koneksi PDO.
+- Method `tambahPesan()` menyimpan pesan pengunjung menggunakan prepared statement.
+- Method `ambilSemuaPesan()` mengambil daftar pesan dari database.
+- Halaman `guestbook.php` menyediakan formulir pengiriman pesan dan tabel daftar pesan pada halaman yang sama.
+- Pengalihan halaman setelah pengiriman berhasil digunakan untuk mencegah pengiriman ulang formulir ketika halaman dimuat kembali.
+
+### Validasi dan Keamanan
+
+Aplikasi menerapkan:
+
+- Validasi nama wajib diisi dan maksimal 100 karakter.
+- Validasi format email dan batas maksimal 255 karakter.
+- Validasi pesan minimal lima karakter.
+- Perlindungan CSRF menggunakan token session dan `hash_equals()`.
+- Prepared statements untuk operasi database.
+- `htmlspecialchars()` dengan encoding UTF-8 untuk sanitasi output HTML.
+- Penanganan error koneksi atau operasi database agar detail internal tidak ditampilkan kepada pengunjung.
+
+### Konfigurasi Database Lokal
+
+Konfigurasi koneksi database disimpan secara lokal pada `config.local.php` di root repository. File tersebut diabaikan oleh `.gitignore` dan tidak disertakan dalam commit.
+
+Sebelum menjalankan aplikasi, sesuaikan konfigurasi lokal dengan server MySQL yang digunakan. Jangan menyimpan password database dalam berkas PHP yang diunggah ke repository.
+
+### Pengujian
+
+Pengujian aplikasi meliputi:
+
+- Menampilkan daftar pesan dari database.
+- Mengirim dan menyimpan pesan pengunjung.
+- Memastikan pengalihan halaman setelah pengiriman berhasil.
+- Memeriksa validasi nama, email, dan isi pesan.
+- Memastikan koneksi database dapat dilakukan menggunakan konfigurasi lokal.
+
+### Menjalankan Tugas 7
+
+Pastikan PHP dengan ekstensi PDO MySQL dan server MySQL tersedia. Buat database serta tabel `buku_tamu` sesuai struktur yang digunakan aplikasi, lalu siapkan `config.local.php` di root repository.
+
+Jalankan server PHP dari root repository:
+
+```powershell
+php -S localhost:8000
+```
+
+Buka halaman berikut pada browser:
+
+```text
+http://localhost:8000/Tugas%207/guestbook.php
+```
+
+### Penyelesaian
+
+Pesan commit akhir yang ditentukan:
+
+```text
+Selesaikan tugas mandiri modul 7
+```
+
 ---
 
 ## Cara Membuka
@@ -503,6 +590,7 @@ Commit terakhir mencakup review, koreksi normalisasi, dan penyelesaian akhir tug
 6. Untuk **Tugas 4**, buka `04-tugas-tata-letak.html` melalui browser atau gunakan Live Server.
 7. Untuk **Tugas 5**, pastikan PHP sudah terpasang dan dapat dijalankan melalui terminal.
 8. Untuk **Tugas 6**, buka `06-tugas-pemodelan-database.md` menggunakan editor Markdown yang mendukung Mermaid.
+9. Untuk **Tugas 7**, siapkan database MySQL dan `config.local.php` di root repository, lalu jalankan server PHP dari root repository.
 
 ---
 
@@ -539,6 +627,15 @@ Commit terakhir mencakup review, koreksi normalisasi, dan penyelesaian akhir tug
 - Gunakan editor atau platform yang mendukung Mermaid untuk melihat diagram ERD secara visual.
 - Perhatikan hubungan antara Mahasiswa, Buku, Penerbit, dan Transaksi Peminjaman.
 
+### Tugas 7
+
+- Pastikan server MySQL berjalan dan database `buku_tamu_db` tersedia.
+- Pastikan `config.local.php` sudah dibuat di root repository dengan konfigurasi database yang benar.
+- Jalankan `php -S localhost:8000` dari root repository.
+- Buka `http://localhost:8000/Tugas%207/guestbook.php`.
+- Coba kirim pesan dengan data valid dan periksa hasilnya pada tabel.
+- Uji validasi nama, email, dan pesan.
+
 ---
 
 ## Pengumpulan dan Riwayat Pengerjaan
@@ -554,6 +651,16 @@ Tugas dikumpulkan melalui Sikola dengan mencantumkan nama, NIM, dan tautan repos
 efbf076 Tambah simulasi normalisasi E-Library
 b421698 Tambah tabel final dan relasi Mermaid
 2bb9f5c Selesaikan tugas mandiri modul 6
+```
+
+### Riwayat Commit Tugas 7
+
+```text
+6e5e9c0 Tambah kelas GuestBook berbasis PDO
+c380208 Tambah halaman buku tamu digital
+1459bc7 Perbaiki redirect halaman buku tamu
+0c6cb50 Selesaikan tugas mandiri modul 7 (commit awal)
+a1a9afc Selesaikan tugas mandiri modul 7
 ```
 
 ---
