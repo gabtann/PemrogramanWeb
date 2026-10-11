@@ -73,7 +73,7 @@ try {
             // Mencegah pengiriman ulang formulir
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-            header('Location: GuestBookPage.php?success=1');
+            header('Location: guestbook.php?success=1');
             exit;
         }
     }
@@ -118,7 +118,7 @@ function e(string $value): string
 
         <h2>Formulir Buku Tamu</h2>
 
-        <form method="POST" action="GuestBookPage.php">
+        <form method="POST" action="guestbook.php">
             <input
                 type="hidden"
                 name="csrf_token"
