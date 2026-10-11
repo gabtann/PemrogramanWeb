@@ -3,11 +3,7 @@ session_start();
 
 require_once __DIR__ . '/GuestBook.php';
 
-// Konfigurasi database
-$host = 'localhost';
-$dbname = 'buku_tamu_db';
-$username = 'root';
-$password = 'gabrieltan050106';
+
 
 $errors = [];
 $nama = '';
@@ -20,15 +16,27 @@ if (empty($_SESSION['csrf_token'])) {
 }
 
 try {
+    // Membaca konfigurasi database lokal
+    $configPath = dirname(__DIR__) . '/config.local.php';
+
+    if (!is_file($configPath)) {
+        throw new RuntimeException(
+            'Konfigurasi database lokal belum tersedia.'
+        );
+    }
+
+    $dbConfig = require $configPath;
+
     $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-        $username,
-        $password,
+        "mysql:host={$dbConfig['host']};dbname={$dbConfig['dbname']};charset=utf8mb4",
+        $dbConfig['username'],
+        $dbConfig['password'],
         [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]
     );
+
 
     $bukuTamu = new GuestBook($pdo);
 
@@ -81,8 +89,8 @@ try {
     // Mengambil semua pesan
     $daftarPesan = $bukuTamu->ambilSemuaPesan();
 
-} catch (PDOException $e) {
-    $dbError = 'Koneksi atau operasi database gagal. Periksa konfigurasi database.';
+} catch (PDOException | RuntimeException $e) {
+    $dbError = 'Koneksi atau konfigurasi database gagal. Periksa konfigurasi lokal.';
 }
 
 // Sanitasi output HTML
